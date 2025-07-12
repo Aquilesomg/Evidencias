@@ -1,0 +1,45 @@
+<!-- Hero Section -->
+<section class="h-screen min-h-[700px] flex items-center justify-center hero-bg-light">
+    <div class="absolute inset-0 bg-white/20"></div>
+    <div class="relative text-center text-gray-900 p-6">
+        <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif-display font-semibold leading-tight mb-4">
+            El Arte de la Fragancia
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-8">
+            Descubra una selección curada de los perfumes más exquisitos y codiciados del mundo.
+        </p>
+        <a href="#new-arrivals" class="bg-transparent border border-gray-800 text-gray-800 font-semibold py-3 px-8 rounded-full hover:bg-gray-800 hover:text-white transition-all duration-300 ease-in-out">
+            Explorar Colección
+        </a>
+    </div>
+</section>
+
+<!-- Main Content con efecto de superposición -->
+<main class="relative z-10 -mt-24 bg-[#fdfdfd] rounded-t-3xl shadow-2xl">
+    <div class="container mx-auto px-6 py-20 md:py-32">
+        <section id="new-arrivals" class="mb-24">
+            <h2 class="text-4xl font-serif-display text-center mb-4 text-gray-900">Nuevas Llegadas</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-xl mx-auto">Las últimas creaciones de las casas de perfumería más prestigiosas del mundo.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <app-product-card *ngFor="let product of newArrivals" [product]="product"></app-product-card>
+            </div>
+        </section>
+        
+        <section id="best-sellers" class="mb-24">
+            <h2 class="text-4xl font-serif-display text-center mb-4 text-gray-900">Los Más Vendidos</h2>
+            <p class="text-center text-gray-600 mb-12 max-w-xl mx-auto">Fragancias icónicas que han definido generaciones y continúan cautivando.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <app-product-card *ngFor="let product of bestSellers" [product]="product"></app-product-card>
+            </div>
+        </section>
+
+        <section id="brands" class="mb-24">
+            <h2 class="text-4xl font-serif-display text-center mb-12 text-gray-900">Colecciones por Marca</h2>
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8">
+                <a href="#" class="text-3xl font-serif-display text-gray-400 opacity-80 hover:text-gray-900 brand-logo">CHANEL</a>
+                <a href="#" class="text-3xl font-serif-display text-gray-400 opacity-80 hover:text-gray-900 brand-logo">DIOR</a>
+                <a href="#" class="text-3xl font-serif-display text-gray-400 opacity-80 hover:text-gray-900 brand-logo">TOM FORD</a>
+            </div>
+        </section>
+    </div>
+</main>

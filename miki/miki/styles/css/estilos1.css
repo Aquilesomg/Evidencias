@@ -1,0 +1,243 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #25282a, #25282a);
+            padding: 20px;
+            position: relative;
+            border-bottom: 5px solid #1293d4;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .logo .highlight {
+            color: #1292d5;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+.nav-menu li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #1292d5;
+    box-shadow: (0 2px 5px rgba(0, 0, 0, 0.2));
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+        .nav-menu li a.active {
+            color: #1292d5;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f0f0f0" width="1200" height="600"/><rect fill="%23ddd" x="400" y="200" width="400" height="200" rx="10"/><circle fill="%23bbb" cx="600" cy="300" r="30"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('/styles/img/cabecera.jpg') center/cover;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: #25282a;
+            padding: 40px 0;
+            color: white;
+        }
+
+        .newsletter-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .newsletter h2 {
+            font-size: 24px;
+            font-weight: normal;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+        }
+
+        .newsletter input {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 0;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        .newsletter button {
+            padding: 12px 25px;
+            background: #e94b18;
+            color: white;
+            border: none;
+            border-radius: 0;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background: #e94b18;
+        }
+
+        /* Services Section */
+        .services {
+            background: #ecf0f1;
+            padding: 80px 0;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            padding: 0 20px;
+        }
+
+        .service-item {
+            text-align: center;
+            background: transparent;
+            padding: 40px 30px;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1292d5;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .footer p {
+            font-size: 16px;
+        }
+
+        /* Responsive */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .newsletter-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .newsletter input {
+                width: 250px;
+            }
+
+            .services-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }

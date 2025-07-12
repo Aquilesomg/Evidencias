@@ -1,0 +1,41 @@
+<div class="flex h-screen bg-gray-100">
+  <!-- Sidebar -->
+  <aside class="w-64 flex-shrink-0 bg-white border-r border-gray-200 flex flex-col">
+    <div class="h-16 flex items-center justify-center px-4 border-b border-gray-200">
+      <a routerLink="/" class="text-2xl font-serif-display font-bold tracking-wider text-gray-900">AURA</a>
+    </div>
+    <nav class="flex-1 p-4 space-y-2">
+      <a routerLink="/admin/resumen" class="sidebar-link" [class.active]="activeLink === 'resumen'">
+        <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+        Resumen
+      </a>
+      <a routerLink="/admin/aprobacion" class="sidebar-link" [class.active]="activeLink === 'aprobacion'">
+        <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+        Aprobación de Productos
+      </a>
+      <a routerLink="/admin/pedidos" class="sidebar-link" [class.active]="activeLink === 'pedidos'">
+        <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+        Gestión de Pedidos
+      </a>
+      <a routerLink="/admin/categorias" class="sidebar-link" [class.active]="activeLink === 'categorias'">
+        <svg class="h-5 w-5 mr-3" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
+        Gestión de Categorías
+      </a>
+    </nav>
+  </aside>
+
+  <div class="flex-1 flex flex-col overflow-hidden">
+    <header class="bg-white shadow-sm">
+      <div class="px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-semibold text-gray-700">{{ pageTitle }}</h1>
+        <div class="flex items-center space-x-4">
+          <span class="text-sm text-gray-600">Hola, {{ username }}</span>
+          <button (click)="logout()" class="text-sm text-amber-700 hover:text-amber-800 font-medium">Salir</button>
+        </div>
+      </div>
+    </header>
+    <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100 p-6 md:p-8">
+      <router-outlet></router-outlet>
+    </main>
+  </div>
+</div>

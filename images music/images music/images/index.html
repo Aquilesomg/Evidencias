@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Music Landing</title>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+        overflow-x: hidden;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    header {
+        background: url('./angel.jpg') lightgray 50% / cover no-repeat;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        width: 100%;
+        margin: 0;
+    }
+    
+    header h1 {
+        font-size: 3.5rem;
+        text-align: center;
+        font-weight: 100;
+    }
+
+    /* Secciones comunes */
+    .section {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        margin: 0;
+        padding: 40px 20px;
+        background: white;
+    }
+
+    .text, .text2 {
+        flex: 1;
+    }
+
+    .image, .image2 {
+        flex: 0 0 250px; /* Tamaño fijo más pequeño */
+        height: 300px; /* Altura más pequeña */
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.3s ease;
+        transform: scale(1);
+        border-radius: 8px;
+        margin: 0; /* Eliminar márgenes */
+    }
+
+    .image:hover, .image2:hover {
+        transform: scale(1.05); /* Hover más sutil */
+    }
+
+    .highlight, .highlight2 {
+        padding-top: 20px;
+        font-weight: bold;
+        background: linear-gradient(90deg, #ff8800, #ff006a, #ff0037);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .size, .size2 {
+        font-weight: bold;
+        margin: 20px 0;
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    .content, .content2 {
+        word-wrap: break-word;
+        margin: 20px 0;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: #ff0040;
+        color: white;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 15px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #e6003a;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 0, 64, 0.3);
+    }
+
+    /* Sección 1 - Texto izquierda, imagen derecha */
+    .section1 .text { order: 1; }
+    .section1 .image { 
+        order: 2; 
+        background-image: url('./palmer.png');
+    }
+
+    /* Sección 2 - Imagen izquierda, texto derecha */
+    .section2 .image2 { 
+        order: 1; 
+        background-image: url('./wesley.png');
+    }
+    .section2 .text2 { order: 2; }
+
+    /* Banner Section - Texto a la derecha */
+    .banner {
+        background-image: url('./raptis.png');
+        background-size: cover;
+        background-position: center;
+        background-color: #f4f4f4;
+        color: white;
+        padding: 4rem 2rem;
+        text-align: center;
+        margin: 0;
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+    }
+
+    .banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.4);
+    }
+    
+    .banner-content {
+        text-align: right;
+        max-width: 50%;
+        padding: 30px;
+        border-radius: 12px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .banner h2 {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+        font-weight: 900;
+    }
+
+    .banner p {
+        max-width: 500px;
+        margin: 0 auto 1rem auto;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #ff0040;
+        color: white;
+        width: 100%;
+        padding: 2rem 1rem;
+        text-align: center;
+        margin: 0;
+    }
+
+    .footer-content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .footer-column h4 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+
+    .footer-column ul {
+        list-style: none;
+    }
+
+    .footer-column ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-column ul li a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+    }
+
+    .footer-column ul li a:hover {
+        color: white;
+    }
+
+    /* ========== COMPORTAMIENTO RESPONSIVO ========== */
+    
+    @media (max-width: 768px) {
+        header {
+            height: 200px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        .section {
+            flex-direction: row !important; /* MANTENER horizontal en móvil */
+            gap: 15px;
+            padding: 30px 15px;
+            text-align: left;
+        }
+
+        /* MANTENER el orden alternado en móvil */
+        /* Sección 1: texto izquierda (order: 1), imagen derecha (order: 2) */
+        .section1 .text { order: 1; }
+        .section1 .image { order: 2; }
+        
+        /* Sección 2: imagen izquierda (order: 1), texto derecha (order: 2) */
+        .section2 .image2 { order: 1; }
+        .section2 .text2 { order: 2; }
+
+        .text, .text2 {
+            flex: 1;
+            min-width: 0; /* Evita overflow */
+        }
+
+        .image, .image2 {
+            flex: 0 0 180px; /* Más pequeño en móvil */
+            width: 180px;
+            height: 150px;
+            transform: scale(1);
+            margin: 0;
+        }
+
+        .image:hover, .image2:hover {
+            transform: scale(1.02);
+        }
+
+        .size, .size2 {
+            font-size: 1.6rem;
+            margin: 15px 0;
+        }
+
+        .content, .content2 {
+            font-size: 0.95rem;
+            margin: 15px 0;
+        }
+
+        .banner {
+            padding: 2.5rem 1rem;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .banner-content {
+            max-width: 90%;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .banner h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner p {
+            font-size: 0.9rem;
+            margin: 0 auto 0.8rem auto;
+        }
+
+        .footer-content {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .footer-column h4 {
+            font-size: 0.8rem;
+        }
+
+        .footer-column ul li a {
+            font-size: 0.7rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        body {
+            padding: 0;
+        }
+
+        header {
+            height: 180px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        .section {
+            flex-direction: row !important; /* MANTENER horizontal */
+            padding: 20px 10px;
+            gap: 12px;
+        }
+
+        /* ASEGURAR el orden alternado en móviles pequeños */
+        .section1 .text { order: 1; }
+        .section1 .image { order: 2; }
+        .section2 .image2 { order: 1; }
+        .section2 .text2 { order: 2; }
+
+        .text, .text2 {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .image, .image2 {
+            flex: 0 0 140px; /* Aún más pequeño */
+        }
+
+        .size, .size2 {
+            font-size: 1.3rem;
+            margin: 10px 0;
+        }
+
+        .content, .content2 {
+            font-size: 0.85rem;
+            margin: 10px 0;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            font-size: 0.85rem;
+        }
+
+        .banner {
+            padding: 2rem 1rem;
+        }
+
+        .banner-content {
+            max-width: 95%;
+            padding: 0.1px;
+            margin-left: 200px;
+        }
+
+        .banner h2 {
+            font-size: 1.3rem;
+        }
+
+        .banner p {
+            font-size: 0.85rem;
+        }
+
+        .footer-content {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .footer-column h4 {
+            font-size: 0.6rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.2rem;
+        }
+
+        .footer-column ul li a {
+            font-size: 0.55rem;
+        }
+
+        footer {
+            padding: 1rem 0.3rem;
+        }
+    }
+
+    @media (max-width: 360px) {
+        header h1 {
+            font-size: 1.8rem;
+        }
+
+        .section {
+            padding: 15px 8px;
+            gap: 10px;
+        }
+
+        .image, .image2 {
+            flex: 0 0 120px; /* Muy pequeño para pantallas tiny */
+            width: 120px;
+            height: 100px;
+        }
+
+        .size, .size2 {
+            font-size: 1.1rem;
+            margin: 8px 0;
+        }
+
+        .content, .content2 {
+            font-size: 0.8rem;
+            margin: 8px 0;
+        }
+
+        .btn {
+            padding: 6px 12px;
+            font-size: 0.8rem;
+        }
+
+        .banner h2 {
+            font-size: 1.1rem;
+        }
+
+        .banner p {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+        header {
+            height: 150px;
+        }
+
+        header h1 {
+            font-size: 2rem;
+        }
+
+        .section {
+            padding: 20px;
+        }
+
+        .banner {
+            padding: 1.5rem 1rem;
+        }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>MUSIC</h1>
+  </header>
+
+  <!-- SECTION 1 -->
+  <section class="section section1">
+    <div class="text">
+      <h2 class="size"><span class="highlight">MUSIC.</span><br>FUN.<br>ENTERTAINMENT.</h2>
+      <p class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Discover the ultimate music experience with cutting-edge sound technology.</p>
+      <a href="#" class="btn">Explore Now</a>
+    </div>
+    <div class="image"></div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section class="section section2">
+    <div class="image2"></div>
+    <div class="text2">
+      <h2 class="size2"><span class="highlight2">LOUDER.</span><br>LIKE IT WAS NEVER<br>BEEN BETTER.</h2>
+      <p class="content2">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Experience music like never before with our premium audio solutions.</p>
+      <a href="#" class="btn">Explore Now</a>
+    </div>
+  </section>
+  
+  <!-- Banner Section con texto a la derecha -->
+  <section class="banner">
+      <div class="banner-content">
+          <h2>SOUND VIBES<br>WITH COLORS.</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <a href="#" class="btn">GO TO IT</a>
+      </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+      <div class="footer-content">
+          <div class="footer-column">
+              <h4>About</h4>
+              <ul>
+                  <li><a href="#">Company</a></li>
+                  <li><a href="#">Team</a></li>
+                  <li><a href="#">Blog</a></li>
+                  <li><a href="#">Careers</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h4>Product</h4>
+              <ul>
+                  <li><a href="#">Music</a></li>
+                  <li><a href="#">Podcasts</a></li>
+                  <li><a href="#">Videos</a></li>
+                  <li><a href="#">Live Shows</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h4>Links</h4>
+              <ul>
+                  <li><a href="#">Contact</a></li>
+                  <li><a href="#">Support</a></li>
+                  <li><a href="#">Privacy</a></li>
+                  <li><a href="#">Terms</a></li>
+              </ul>
+          </div>
+          <div class="footer-column">
+              <h4>Follow</h4>
+              <ul>
+                  <li><a href="#">Facebook</a></li>
+                  <li><a href="#">Twitter</a></li>
+                  <li><a href="#">Instagram</a></li>
+                  <li><a href="#">YouTube</a></li>
+              </ul>
+          </div>
+      </div>
+  </footer>
+
+</body>
+</html>

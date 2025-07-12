@@ -1,0 +1,225 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header{
+background: url(./angel.jpg) lightgray 50% / cover no-repeat;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+header h1{
+    font-size: 3.5rem;
+    text-align: center;
+    margin-left: 35px;
+    margin-top: -20px;
+     font-weight: 100;
+
+}
+
+section .highlight {
+  padding-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff8800, #ff006a, #ff0037);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.size {
+font-size: 1rem;
+margin: 20px auto;
+margin-left: 30px;
+margin-top: 60px;
+}
+
+.content {
+    word-wrap: break-word;
+    max-width: 140px;
+    margin-left: 30px;
+
+}
+
+.image {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  margin-left: auto;
+  margin-right: 10px;
+  margin-top: -190px;
+}
+
+
+.section .h2 {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0040;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.5rem;
+    margin-left: 30px;
+    margin-top: 10px;
+}
+
+/* section 2*/
+section .highlight2 {
+  padding-top: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  background: linear-gradient(90deg, #ff8800, #ff006a, #ff0037);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.size2 {
+font-size: 1rem;
+margin: 20px auto;
+margin-left: 250px;
+margin-top: 60px;
+text-align: left;
+  transform: translate(0%, -300%);
+}
+
+.content2 {
+    word-wrap: break-word;
+    max-width: 140px;
+    margin-left: 250px;
+      transform: translate(0%, -230%);
+}
+
+.image2 {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.1);
+  transition: transform 0.3s ease;
+  margin-left: 10px;
+  transform: translate(0%, 40%);
+}
+
+.section2 .h2 {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn2 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff0040;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 0.5rem;
+    margin-left: 250px;
+    margin-top: 10px;
+    transform: translate(0%, -550%);
+}
+
+/* Banner Section */
+.banner {
+  background-image: url('./raptis.png');
+  background-size: contain;
+  background-position: center;
+  background-color: #f4f4f4;
+  color: white;
+  padding: 2rem 1rem 0 1rem; /* Reducimos padding inferior */
+  text-align: center;
+  margin-bottom: 0; /* Quitamos margen inferior para que no haya espacio extra */
+}
+
+
+        .banner h2 {
+            font-size: 0.8rem;
+            margin-left: 130px;
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .banner p {
+            max-width: 500px;
+            margin: 0 auto 0.4rem auto;
+            font-size: 0.5rem;
+            transform: translate(10%, 50%);
+        }
+
+        /* Footer */
+        footer {
+  background-color: #ff0040;
+  color: white;
+  width: 100%;
+  padding: 1rem 0.5rem;
+  text-align: center;
+  margin-top: 0; /* Quitamos margen superior */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .footer-column h4 {
+            font-size: 0.5rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.4rem;
+            font-size: 0.1rem;
+        }
+
+        .footer-column ul li a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.4rem;
+            transition: color 0.3s ease;
+            
+        }
+
+        .footer-column ul li a:hover {
+            color: white;
+            
+        }

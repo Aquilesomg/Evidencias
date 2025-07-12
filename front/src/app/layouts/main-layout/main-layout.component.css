@@ -1,0 +1,15 @@
+.main-header { position: relative; top: 0; left: 0; right: 0; z-index: 50; }
+.header-container { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; padding-bottom: 1rem; }
+.logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; letter-spacing: 0.05em; color: #111827; text-decoration: none; }
+.main-nav { display: none; }
+.main-nav a { color: #4b5563; text-decoration: none; transition: color 0.3s ease; }
+.main-nav a:hover { color: #111827; }
+.header-actions { display: flex; align-items: center; gap: 1.25rem; }
+.header-actions button, .header-actions a { background: none; border: none; color: #6b7280; cursor: pointer; transition: color 0.3s ease; }
+.header-actions button:hover, .header-actions a:hover { color: #111827; }
+.icon { width: 1.5rem; height: 1.5rem; }
+.page-content { flex: 1; }
+
+@media (min-width: 768px) {
+  .main-nav { display: flex; gap: 2rem; }
+}

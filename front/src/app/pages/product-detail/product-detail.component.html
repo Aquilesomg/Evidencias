@@ -1,0 +1,81 @@
+
+<main class="container product-detail-main" *ngIf="product; else loading">
+  <div class="product-grid">
+    <!-- Galería -->
+    <div class="image-gallery">
+      <div class="main-image-container">
+        <img [src]="mainImageUrl" [alt]="product.name" class="main-image">
+        <p style="font-size: 12px; color: red;">{{ mainImageUrl }}</p>
+
+      </div>
+      <div class="thumbnail-grid">
+        <div *ngFor="let image of product.images"
+             class="thumbnail"
+            [class.active]="mainImageUrl === backendUrl + image.imageUrl"
+             (click)="changeMainImage(image.imageUrl)">
+          <img [src]="backendUrl + image.imageUrl"
+               [alt]="'Miniatura de ' + product.name"
+               class="thumbnail-img">
+        </div>
+      </div>
+    </div>
+
+    <!-- Información -->
+    <div class="product-info">
+      <h2 class="product-brand">{{ product.brand }}</h2>
+      <h1 class="product-title">{{ product.name }}</h1>
+      <p class="product-price">{{ selectedVariation?.price | currency:'COP':'$' }}</p>
+
+      <p class="product-description">
+        {{ product.inspiration || 'Una fragancia exquisita que captura la esencia del lujo y la sofisticación.' }}
+      </p>
+
+      <!-- Tamaños -->
+      <div *ngIf="product.variations && product.variations.length > 0">
+        <h3 class="size-title">Tamaño</h3>
+        <div class="size-options">
+          <button *ngFor="let variation of product.variations"
+                  class="size-button"
+                  [class.active]="selectedVariation?.id === variation.id"
+                  (click)="selectVariation(variation)">
+            {{ variation.size_ml }} ml
+          </button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="add-to-cart-button" (click)="addToCart()">Añadir a la Cesta</button>
+      </div>
+
+      <div class="guarantee">
+        <svg xmlns="http://www.w3.org/2000/svg" class="guarantee-icon" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+        </svg>
+        <span>Garantía de Autenticidad del 100%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detalles -->
+  <div class="details-section" *ngIf="product.notes">
+    <h3 class="details-title">El Corazón de la Fragancia</h3>
+    <div class="details-grid">
+      <div>
+        <h4 class="detail-subtitle">La Inspiración</h4>
+        <p>{{ product.inspiration }}</p>
+      </div>
+      <div>
+        <h4 class="detail-subtitle">Pirámide Olfativa</h4>
+        <ul class="notes-list">
+          <li *ngIf="product.notes?.salida"><strong>Notas de Salida:</strong> {{ product.notes.salida }}</li>
+          <li *ngIf="product.notes?.corazon"><strong>Nota de Corazón:</strong> {{ product.notes.corazon }}</li>
+          <li *ngIf="product.notes?.fondo"><strong>Notas de Fondo:</strong> {{ product.notes.fondo }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</main>
+
+<ng-template #loading>
+  <div class="loading-container">Cargando detalles del perfume...</div>
+</ng-template>

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100vh;
+}
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  /* El fondo se aplicará directamente en el componente de login/registro */
+}

@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    background: #25282a;
+    padding: 20px;
+    position: relative;
+    border-bottom: 5px solid #1293d4;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+.highlight {
+    color: #1292d5;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+}
+
+.nav-menu li a {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: #1292d5;
+    box-shadow: (0 2px 5px rgba(0, 0, 0, 0.2));
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nav-menu li a.active {
+    color: #1292d5;
+}
+
+.boletin {
+  background: #2c2c2c;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.boletin-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.boletin input {
+  padding: 6px;
+  width: 200px;
+  max-width: 100%;
+}
+
+.boletin button {
+  background: #e8491d;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+main {
+  padding: 30px 0;
+}
+
+.main-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.principal {
+  flex: 2;
+  min-width: 300px;
+}
+
+aside {
+  flex: 1;
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  min-width: 250px;
+}
+
+article {
+  background: #eaeaea;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+footer {
+  background: #0091ea;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .main-flex {
+    flex-direction: column;
+  }
+
+  aside {
+    order: -1;
+  }
+}* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  background: #f4f4f4;
+  line-height: 1.6;
+}
+
+.contenedor {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+header {
+  background: #1d1f20;
+  color: #fff;
+  padding: 20px 0;
+  border-bottom: 4px solid #007acc;
+}
+
+.header-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 span {
+  color: #007acc;
+}
+
+nav a {
+  color: #fff;
+  margin-left: 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a.activo {
+  color: #00aaff;
+}
+
+.boletin {
+  background: #2c2c2c;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.boletin-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.boletin input {
+  padding: 6px;
+  width: 200px;
+  max-width: 100%;
+}
+
+.boletin button {
+  background: #e8491d;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+main {
+  padding: 30px 0;
+}
+
+.main-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.principal {
+  flex: 2;
+  min-width: 300px;
+}
+
+aside {
+  flex: 1;
+  background: #333;
+  color: #fff;
+  padding: 20px;
+  min-width: 250px;
+}
+
+article {
+  background: #eaeaea;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+}
+
+footer {
+  background: #0091ea;
+  color: #fff;
+  text-align: center;
+  padding: 20px 0;
+  margin-top: 20px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-menu {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-top: 10px;
+  }
+
+  .main-flex {
+    flex-direction: column;
+  }
+
+  aside {
+    order: -1;
+  }
+}

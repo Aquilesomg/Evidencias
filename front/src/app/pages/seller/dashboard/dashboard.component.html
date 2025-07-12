@@ -1,0 +1,25 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <h3 class="text-sm font-medium text-gray-500">Ingresos (Últimos 30 días)</h3>
+    <p class="mt-2 text-3xl font-semibold text-gray-900">{{ summary.revenue | currency:'COP':'$' }}</p>
+  </div>
+  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <h3 class="text-sm font-medium text-gray-500">Pedidos Nuevos</h3>
+    <p class="mt-2 text-3xl font-semibold text-gray-900">{{ summary.newOrders }}</p>
+  </div>
+  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <h3 class="text-sm font-medium text-gray-500">Productos Activos</h3>
+    <p class="mt-2 text-3xl font-semibold text-gray-900">{{ summary.activeProducts }}</p>
+  </div>
+  <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <h3 class="text-sm font-medium text-gray-500">Productos Pendientes</h3>
+    <p class="mt-2 text-3xl font-semibold text-orange-600">{{ summary.pendingProducts }}</p>
+  </div>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+    <h3 class="font-semibold text-gray-800 mb-4">Acciones Rápidas</h3>
+    <div class="space-y-3">
+        <a routerLink="/vendedor/productos/crear" class="block w-full text-center px-4 py-3 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-colors">Añadir Nuevo Perfume</a>
+        <a routerLink="/vendedor/productos" class="block w-full text-center px-4 py-3 bg-gray-200 text-gray-800 font-bold rounded-lg hover:bg-gray-300 transition-colors">Ver todos mis productos</a>
+    </div>
+</div>

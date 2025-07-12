@@ -1,0 +1,23 @@
+<main class="container">
+  <div class="title-container">
+    <h1 class="main-title">Mi Cuenta</h1>
+  </div>
+
+  <div class="profile-grid">
+    <!-- Navegación del Perfil -->
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <button class="profile-nav-link" [class.active]="activeTab === 'perfil'" (click)="switchTab('perfil')">Mi Perfil</button>
+        <button class="profile-nav-link" [class.active]="activeTab === 'direcciones'" (click)="switchTab('direcciones')">Mis Direcciones</button>
+        <button class="profile-nav-link" [class.active]="activeTab === 'pedidos'" (click)="switchTab('pedidos')">Historial de Pedidos</button>
+      </nav>
+    </aside>
+
+    <!-- Contenido de la Sección -->
+    <div class="content-area">
+      <app-profile-info *ngIf="activeTab === 'perfil'"></app-profile-info>
+      <app-profile-addresses *ngIf="activeTab === 'direcciones'"></app-profile-addresses>
+      <app-profile-orders *ngIf="activeTab === 'pedidos'"></app-profile-orders>
+    </div>
+  </div>
+</main>

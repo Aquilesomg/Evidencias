@@ -1,0 +1,13 @@
+<div class="bg-white rounded-lg overflow-hidden group card-hover-effect border border-gray-100">
+<img [src]="getImageUrl(product.mainImageUrl)" [alt]="product.name" class="w-full h-80 object-cover">
+
+
+  <div class="p-6 text-center">
+    <h3 class="font-serif-display text-xl text-amber-700">{{ product.brand }}</h3>
+    <p class="text-gray-800 mt-1">{{ product.name }}</p>
+    <a
+      [routerLink]="['/producto', product.id]"
+      class="mt-4 inline-block text-sm text-gray-500 group-hover:text-gray-900 transition-colors"
+    >Ver Detalles</a>
+  </div>
+</div>

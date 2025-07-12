@@ -1,0 +1,45 @@
+<div class="flex justify-end mb-4">
+    <a routerLink="/vendedor/productos/crear" class="px-4 py-2 bg-amber-600 text-white font-bold rounded-lg hover:bg-amber-700 transition-colors">
+        Añadir Nuevo Perfume
+    </a>
+</div>
+<div class="table-container">
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th class="table-header">Producto</th>
+        <th class="table-header">Estado</th>
+        <th class="table-header">Stock</th>
+        <th class="table-header">Precio</th>
+        <th class="table-header">Acciones</th>
+      </tr>
+    </thead>
+    <tbody class="table-body">
+      <tr *ngFor="let product of products">
+        <td class="table-cell">
+          <div class="product-info">
+            <img class="product-image" [src]="'http://localhost:3000' + product.mainImageUrl" [alt]="product.name">
+            <span class="product-name">{{ product.name }}</span>
+          </div>
+        </td>
+        <td class="table-cell">
+          <span class="status-badge" 
+                [ngClass]="{
+                  'status-activo': product.status === 'activo',
+                  'status-pendiente_aprobacion': product.status === 'pendiente_aprobacion',
+                  'status-rechazado': product.status === 'rechazado',
+                  'status-pausado': product.status === 'pausado'
+                }">
+            {{ product.status?.replace('_', ' ') }}
+          </span>
+        </td>
+        <td class="table-cell text-muted">{{ product.totalStock }} uds.</td>
+        <td class="table-cell text-muted">{{ product.starting_price | currency:'COP':'$' }}</td>
+        <td class="table-cell actions">
+          <a [routerLink]="['/vendedor/productos/editar', product.id]" class="action-link">Editar</a>
+          <button (click)="deleteProduct(product.id)" class="action-link-delete">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

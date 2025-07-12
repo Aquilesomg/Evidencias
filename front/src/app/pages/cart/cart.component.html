@@ -1,0 +1,85 @@
+<!-- Contenido Principal -->
+<main class="container" *ngIf="cart$ | async as cart; else loading">
+  <div class="mb-8">
+    <h1 class="main-title">Mi Cesta</h1>
+  </div>
+
+  <!-- Vista del Carrito con Items -->
+  <div *ngIf="cart.items && cart.items.length > 0; else emptyCart" class="cart-grid">
+    
+    <!-- Columna Izquierda: Lista de Productos -->
+    <div class="cart-items-container">
+      <!-- Item del Carrito (se repite) -->
+      <ng-container *ngFor="let item of cart.items; let last = last">
+        <div class="cart-item">
+          <img [src]="backendUrl + item.mainImageUrl" [alt]="item.name" class="item-image">
+          <div class="item-details">
+            <p class="item-brand">{{ item.brand }}</p>
+            <a [routerLink]="['/producto', item.productoId]" class="item-name">{{ item.name }}</a>
+            <p class="item-size">{{ item.size_ml }} ml</p>
+          </div>
+<div *ngIf="cart$ | async as cart">
+  <div *ngFor="let item of cart.items">
+    <div>{{ item.name }}</div>
+    <input
+      type="number"
+      [value]="item.quantity"
+      (change)="onQuantityChange($event, item.itemId)"
+      min="1"
+    />
+    <button (click)="removeItem(item.itemId)">Eliminar</button>
+  </div>
+  <button (click)="proceedToCheckout()">Proceder al pago</button>
+</div>
+
+          <div class="item-total-price">
+            <p>{{ (item.price * item.quantity) | currency:'COP':'$' }}</p>
+          </div>
+          <button (click)="removeItem(item.itemId)" class="remove-item-btn">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+        <hr *ngIf="!last" class="item-divider">
+      </ng-container>
+    </div>
+
+    <!-- Columna Derecha: Resumen del Pedido -->
+    <div class="summary-container">
+      <div class="summary-card">
+        <h2 class="summary-title">Resumen del Pedido</h2>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span>{{ cart.subtotal | currency:'COP':'$' }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Envío</span>
+          <span>Gratis</span>
+        </div>
+        <hr class="summary-divider">
+        <div class="summary-total">
+          <span>Total</span>
+          <span>{{ cart.subtotal | currency:'COP':'$' }}</span>
+        </div>
+        <button (click)="proceedToCheckout()" class="checkout-button">
+          Proceder al Pago
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template para Carrito Vacío -->
+  <ng-template #emptyCart>
+    <div class="empty-cart-container">
+      <h2 class="empty-cart-title">Tu cesta está vacía</h2>
+      <p class="empty-cart-subtitle">Parece que aún no has añadido ninguna fragancia.</p>
+      <a routerLink="/" class="empty-cart-button">
+        Descubrir Perfumes
+      </a>
+    </div>
+  </ng-template>
+</main>
+
+<!-- Template de Carga -->
+<ng-template #loading>
+  <div class="loading-container">Cargando tu cesta...</div>
+</ng-template>

@@ -1,0 +1,109 @@
+<main class="container">
+  <h1 class="main-title">Añadir Nuevo Perfume</h1>
+
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="form-container">
+
+    <!-- Sección 1: Información Base -->
+    <section class="form-section">
+      <h2 class="form-section-title">Información Base del Perfume</h2>
+      <div class="grid-2-cols">
+
+        <div class="form-group">
+          <label for="name">Nombre <span class="required">*</span></label>
+          <input id="name" type="text" formControlName="name" placeholder="Ej: Sauvage Elixir" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="brand">Marca <span class="required">*</span></label>
+          <input id="brand" type="text" formControlName="brand" placeholder="Ej: Dior" class="form-input" />
+        </div>
+
+        <div class="form-group">
+          <label for="categoryId">Categoría <span class="required">*</span></label>
+          <select id="categoryId" formControlName="categoryId" class="form-select">
+            <option [ngValue]="null" disabled>Seleccione una categoría</option>
+            <option *ngFor="let cat of categories$ | async" [ngValue]="cat.id">{{ cat.name }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Género <span class="required">*</span></label>
+          <select id="gender" formControlName="gender" class="form-select">
+            <option value="Unisex">Unisex</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+          </select>
+        </div>
+
+        <div class="form-group col-span-2">
+          <label for="inspiration">Inspiración</label>
+          <textarea id="inspiration" formControlName="inspiration" rows="4" class="form-textarea"></textarea>
+        </div>
+
+        <div formGroupName="notes" class="notes-grid col-span-2">
+          <div class="form-group">
+            <label>Notas de Salida</label>
+            <input formControlName="salida" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label>Notas de Corazón</label>
+            <input formControlName="corazon" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label>Notas de Fondo</label>
+            <input formControlName="fondo" class="form-input" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección 2: Variaciones -->
+    <section class="form-section">
+      <h2 class="form-section-title">Variaciones (Tamaño, Precio y Stock)</h2>
+      <div formArrayName="variations" class="variations-container">
+        <div *ngFor="let variation of variations.controls; let i = index" [formGroupName]="i" class="variation-item">
+          <div class="form-group">
+            <label [for]="'size_ml_' + i">Tamaño (ml) <span class="required">*</span></label>
+            <input type="number" [id]="'size_ml_' + i" formControlName="size_ml" class="form-input" />
+          </div>
+          <div class="form-group">
+            <label [for]="'price_' + i">Precio <span class="required">*</span></label>
+            <input type="number" [id]="'price_' + i" formControlName="price" class="form-input" step="0.01" />
+          </div>
+          <div class="form-group">
+            <label [for]="'stock_' + i">Stock <span class="required">*</span></label>
+            <input type="number" [id]="'stock_' + i" formControlName="stock" class="form-input" />
+          </div>
+          <div class="remove-btn-container">
+            <button type="button" (click)="removeVariation(i)" class="remove-variation-btn">🗑 Eliminar</button>
+          </div>
+        </div>
+      </div>
+      <button type="button" (click)="addVariation()" class="add-variation-btn">➕ Añadir otro tamaño</button>
+    </section>
+
+    <!-- Sección 3: Galería de Imágenes -->
+    <section class="form-section">
+      <h2 class="form-section-title">Galería de Imágenes (hasta 4)</h2>
+      <div class="drop-zone" (click)="fileInput.click()" (dragover)="onFileDrop($event)" (dragleave)="$event.preventDefault()" (drop)="onFileDrop($event)">
+        <input type="file" #fileInput (change)="onFileSelect($event)" multiple accept="image/*" class="hidden-input" />
+        <p>Arrastra imágenes aquí o <span class="highlight">haz clic</span> para seleccionar.</p>
+      </div>
+
+      <div class="image-preview-container">
+        <div *ngFor="let preview of imagePreviews; let i = index" class="preview-item">
+          <img [src]="preview" [alt]="'Preview ' + (i + 1)" class="preview-image" />
+          <button type="button" (click)="removeImage(i)" class="remove-image-btn">&times;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mensajes y Botón de Envío -->
+    <div *ngIf="errorMessage" class="api-error-text">{{ errorMessage }}</div>
+    <div *ngIf="successMessage" class="api-success-text">{{ successMessage }}</div>
+
+    <div class="submit-container">
+      <button type="submit" [disabled]="productForm.invalid" class="submit-button">💾 Guardar Perfume</button>
+    </div>
+  </form>
+</main>

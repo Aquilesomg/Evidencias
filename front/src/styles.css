@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fdfdfd; /* Fondo blanco */
+    color: #1f2937; /* Texto oscuro */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.font-serif-display {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.container {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+.hero-bg-light {
+  background-image: url('/assets/hero-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+    backdrop-filter: blur(10px); /* Efecto de desenfoque */
+  
+
+}
